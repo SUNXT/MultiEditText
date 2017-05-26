@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MultiEditText">
+        <!-- Cancel ImageView -->
+        <attr name="showCancelButton" format="boolean"/>
+        <attr name="cancelButtonSrc" format="integer"/>
+        <attr name="cancelButtonSize" format="dimension"/>
+
+        <!-- EditText -->
+        <attr name="hint" format="string|integer"/>
+        <attr name="hintColor" format="color"/>
+        <attr name="text" format="string|integer"/>
+        <attr name="textColor" format="color"/>
+        <attr name="SingleLine" format="boolean"/>
+        <attr name="inputType" format="reference"/>
+
+    </declare-styleable>
+</resources>
