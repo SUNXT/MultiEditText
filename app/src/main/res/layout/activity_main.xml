@@ -15,7 +15,7 @@
         android:id="@+id/multi_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        MultiEditText:hint="哈哈哈"
+        MultiEditText:hint="@string/app_name"
         MultiEditText:SingleLine="true"
         />
 

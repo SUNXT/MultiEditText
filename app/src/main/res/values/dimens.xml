@@ -4,4 +4,5 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="btnDefaultSize">20dp</dimen>
+    <dimen name="DefaultHeight">50dp</dimen>
 </resources>
