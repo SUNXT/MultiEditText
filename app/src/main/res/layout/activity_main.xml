@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         MultiEditText:hint="@string/app_name"
         MultiEditText:SingleLine="true"
+        MultiEditText:showCancelButton="false"
         />
 
     <Button
