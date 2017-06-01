@@ -4,16 +4,23 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.sun.xuedian.multiedittext.R;
+
+import static android.graphics.Typeface.MONOSPACE;
+import static android.text.InputType.TYPE_MASK_CLASS;
+import static android.text.InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD;
 
 
 /**
@@ -75,6 +82,19 @@ public class MultiEditText extends RelativeLayout implements TextWatcher{
                 case R.styleable.MultiEditText_SingleLine:
                     editText.setSingleLine(typedArray.getBoolean(attr, false));
                     break;
+                case R.styleable.MultiEditText_inputPassword:
+                    if (typedArray.getBoolean(attr, false)){
+                        editText.setInputType(TYPE_TEXT_VARIATION_WEB_PASSWORD | TYPE_MASK_CLASS);
+//                        editText.setTransformationMethod(PasswordTransformationMethod.getInstance()); //设置为密码输入框
+//                        editText.setTypefaceFromAttrs(null /* fontFamily */, MONOSPACE, 0);
+                    }
+                    break;
+                case R.styleable.MultiEditText_inputNumber:
+                    if (typedArray.getBoolean(attr, false)) {
+                        editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+                    }
+                    break;
+
             }
 
         }
