@@ -7,7 +7,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@null"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/btn_cancel"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
     <ImageView
         android:id="@+id/btn_cancel"
         android:layout_width="@dimen/btnDefaultSize"

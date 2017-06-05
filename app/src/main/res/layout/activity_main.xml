@@ -12,14 +12,13 @@
     tools:context="com.sun.xuedian.multiedittext.MainActivity">
 
     <com.sun.xuedian.multiedittext.widget.MultiEditText
+        android:background="@color/colorAccent"
         android:id="@+id/multi_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         MultiEditText:hint="@string/app_name"
-        MultiEditText:SingleLine="true"
-        MultiEditText:showCancelButton="true"
         MultiEditText:inputPassword="true"
-
+        MultiEditText:textColor="#ffffff"
         />
 
     <Button
@@ -29,12 +28,5 @@
         android:layout_below="@+id/multi_edit_text"
         android:text="获取文本"
         />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_getText"
-        android:inputType="textPassword"
-        android:singleLine="false" />
 
 </RelativeLayout>

@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.InputType;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
@@ -19,7 +21,10 @@ import android.widget.RelativeLayout;
 import com.sun.xuedian.multiedittext.R;
 
 import static android.graphics.Typeface.MONOSPACE;
+import static android.text.InputType.TYPE_CLASS_TEXT;
 import static android.text.InputType.TYPE_MASK_CLASS;
+import static android.text.InputType.TYPE_MASK_VARIATION;
+import static android.text.InputType.TYPE_NUMBER_VARIATION_PASSWORD;
 import static android.text.InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD;
 
 
@@ -84,9 +89,15 @@ public class MultiEditText extends RelativeLayout implements TextWatcher{
                     break;
                 case R.styleable.MultiEditText_inputPassword:
                     if (typedArray.getBoolean(attr, false)){
-                        editText.setInputType(TYPE_TEXT_VARIATION_WEB_PASSWORD | TYPE_MASK_CLASS);
-//                        editText.setTransformationMethod(PasswordTransformationMethod.getInstance()); //设置为密码输入框
-//                        editText.setTypefaceFromAttrs(null /* fontFamily */, MONOSPACE, 0);
+                        editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | TYPE_CLASS_TEXT);
+                        InputFilter inputFilter = new InputFilter() {
+                            @Override
+                            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                                StringBuilder builder = new StringBuilder(source);
+                                return builder.toString().replace(" ", "");
+                            }
+                        };
+                        editText.setFilters(new InputFilter[]{inputFilter});
                     }
                     break;
                 case R.styleable.MultiEditText_inputNumber:
@@ -94,7 +105,6 @@ public class MultiEditText extends RelativeLayout implements TextWatcher{
                         editText.setInputType(InputType.TYPE_CLASS_NUMBER);
                     }
                     break;
-
             }
 
         }
@@ -131,4 +141,9 @@ public class MultiEditText extends RelativeLayout implements TextWatcher{
             btn_cancel.setVisibility(GONE);
         }
     }
+
+    public void setFilters(InputFilter[] inputFilters){
+        editText.setFilters(inputFilters);
+    }
+
 }
