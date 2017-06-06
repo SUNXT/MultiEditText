@@ -18,8 +18,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.sun.xuedian.multiedittext.R;
-
 import static android.graphics.Typeface.MONOSPACE;
 import static android.text.InputType.TYPE_CLASS_TEXT;
 import static android.text.InputType.TYPE_MASK_CLASS;
@@ -60,51 +58,53 @@ public class MultiEditText extends RelativeLayout implements TextWatcher{
         int n = typedArray.getIndexCount();
         for (int i = 0; i < n; ++i){
             int attr = typedArray.getIndex(i);
-            switch (attr){
-                case R.styleable.MultiEditText_showCancelButton:
-                    isShowCancelButton = typedArray.getBoolean(attr, true);
-                case R.styleable.MultiEditText_cancelButtonSrc:
-                    btn_cancel.setImageResource(typedArray.getResourceId(attr, R.drawable.cancel));
-                    break;
-                case R.styleable.MultiEditText_cancelButtonSize:
-                    LayoutParams params = (LayoutParams) btn_cancel.getLayoutParams();
-                    params.width = (int) typedArray.getDimension(attr, getResources().getDimensionPixelSize(R.dimen.btnDefaultSize));
-                    params.height = params.width;
-                    btn_cancel.setLayoutParams(params);
-                    break;
-                case R.styleable.MultiEditText_hint:
-                    editText.setHint(typedArray.getText(attr));
-                    break;
-                case R.styleable.MultiEditText_hintColor:
-                    editText.setHintTextColor(typedArray.getColor(attr, Color.BLACK));
-                    break;
-                case R.styleable.MultiEditText_text:
-                    editText.setText(typedArray.getText(attr));
-                    break;
-                case R.styleable.MultiEditText_textColor:
-                    editText.setTextColor(typedArray.getColor(attr, Color.BLACK));
-                    break;
-                case R.styleable.MultiEditText_SingleLine:
-                    editText.setSingleLine(typedArray.getBoolean(attr, false));
-                    break;
-                case R.styleable.MultiEditText_inputPassword:
-                    if (typedArray.getBoolean(attr, false)){
-                        editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | TYPE_CLASS_TEXT);
-                        InputFilter inputFilter = new InputFilter() {
-                            @Override
-                            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                                StringBuilder builder = new StringBuilder(source);
-                                return builder.toString().replace(" ", "");
-                            }
-                        };
-                        editText.setFilters(new InputFilter[]{inputFilter});
-                    }
-                    break;
-                case R.styleable.MultiEditText_inputNumber:
-                    if (typedArray.getBoolean(attr, false)) {
-                        editText.setInputType(InputType.TYPE_CLASS_NUMBER);
-                    }
-                    break;
+            if (attr == R.styleable.MultiEditText_showCancelButton) {
+                isShowCancelButton = typedArray.getBoolean(attr, true);
+
+                btn_cancel.setImageResource(typedArray.getResourceId(attr, R.drawable.cancel));
+
+            } else if (attr == R.styleable.MultiEditText_cancelButtonSrc) {
+                btn_cancel.setImageResource(typedArray.getResourceId(attr, R.drawable.cancel));
+
+            } else if (attr == R.styleable.MultiEditText_cancelButtonSize) {
+                LayoutParams params = (LayoutParams) btn_cancel.getLayoutParams();
+                params.width = (int) typedArray.getDimension(attr, getResources().getDimensionPixelSize(R.dimen.btnDefaultSize));
+                params.height = params.width;
+                btn_cancel.setLayoutParams(params);
+
+            } else if (attr == R.styleable.MultiEditText_hint) {
+                editText.setHint(typedArray.getText(attr));
+
+            } else if (attr == R.styleable.MultiEditText_hintColor) {
+                editText.setHintTextColor(typedArray.getColor(attr, Color.BLACK));
+
+            } else if (attr == R.styleable.MultiEditText_text) {
+                editText.setText(typedArray.getText(attr));
+
+            } else if (attr == R.styleable.MultiEditText_textColor) {
+                editText.setTextColor(typedArray.getColor(attr, Color.BLACK));
+
+            } else if (attr == R.styleable.MultiEditText_SingleLine) {
+                editText.setSingleLine(typedArray.getBoolean(attr, false));
+
+            } else if (attr == R.styleable.MultiEditText_inputPassword) {
+                if (typedArray.getBoolean(attr, false)) {
+                    editText.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | TYPE_CLASS_TEXT);
+                    InputFilter inputFilter = new InputFilter() {
+                        @Override
+                        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                            StringBuilder builder = new StringBuilder(source);
+                            return builder.toString().replace(" ", "");
+                        }
+                    };
+                    editText.setFilters(new InputFilter[]{inputFilter});
+                }
+
+            } else if (attr == R.styleable.MultiEditText_inputNumber) {
+                if (typedArray.getBoolean(attr, false)) {
+                    editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+                }
+
             }
 
         }
