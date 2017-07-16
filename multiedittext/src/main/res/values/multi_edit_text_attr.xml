@@ -14,6 +14,7 @@
         <attr name="SingleLine" format="boolean"/>
         <attr name="inputPassword" format="boolean"/>
         <attr name="inputNumber" format="boolean"/>
+        <attr name="textSize" format="dimension"/>
 
     </declare-styleable>
 </resources>

@@ -61,8 +61,6 @@ public class MultiEditText extends RelativeLayout implements TextWatcher{
             if (attr == R.styleable.MultiEditText_showCancelButton) {
                 isShowCancelButton = typedArray.getBoolean(attr, true);
 
-                btn_cancel.setImageResource(typedArray.getResourceId(attr, R.drawable.cancel));
-
             } else if (attr == R.styleable.MultiEditText_cancelButtonSrc) {
                 btn_cancel.setImageResource(typedArray.getResourceId(attr, R.drawable.cancel));
 
@@ -105,8 +103,16 @@ public class MultiEditText extends RelativeLayout implements TextWatcher{
                     editText.setInputType(InputType.TYPE_CLASS_NUMBER);
                 }
 
+            } else if (attr == R.styleable.MultiEditText_textSize) {
+                editText.setTextSize(typedArray.getDimension(attr, getResources().getDimension(R.dimen.DefaultTextSize)));
+
             }
 
+            if (isShowCancelButton && !TextUtils.isEmpty(getText())){
+                btn_cancel.setVisibility(VISIBLE);
+            }else {
+                btn_cancel.setVisibility(GONE);
+            }
         }
 
     }
@@ -140,6 +146,10 @@ public class MultiEditText extends RelativeLayout implements TextWatcher{
         }else {
             btn_cancel.setVisibility(GONE);
         }
+    }
+
+    public void setTextSize(float size){
+        editText.setTextSize(size);
     }
 
     public void setFilters(InputFilter[] inputFilters){
