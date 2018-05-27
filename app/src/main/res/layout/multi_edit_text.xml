@@ -9,7 +9,9 @@
         android:background="@null"
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/btn_cancel"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:textSize="@dimen/DefaultTextSize"
+        android:text="123213"/>
     <ImageView
         android:id="@+id/btn_cancel"
         android:layout_width="@dimen/btnDefaultSize"

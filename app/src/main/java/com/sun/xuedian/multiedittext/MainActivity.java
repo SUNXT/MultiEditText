@@ -13,7 +13,7 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.multi_edit_text)
+    @BindView(R.id.multiEditText)
     MultiEditText editText;
     @OnClick(R.id.btn_getText)
     public void getText(){

@@ -5,4 +5,6 @@
 
     <dimen name="btnDefaultSize">20dp</dimen>
     <dimen name="DefaultHeight">50dp</dimen>
+
+    <dimen name="DefaultTextSize">16sp</dimen>
 </resources>

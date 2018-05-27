@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.PasswordTransformationMethod;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -127,6 +128,19 @@ public class MultiEditText extends RelativeLayout implements TextWatcher{
      */
     public String getText(){
         return editText.getText().toString().trim();
+    }
+
+    public void setText(String text){
+        if (TextUtils.isEmpty(text)){
+            Log.e("MultiEditText", "set text, the value is null or empty!");
+            return;
+        }
+        editText.setText(text);
+        editText.setSelection(text.length());
+    }
+
+    public void setText(int resId){
+        editText.setText(resId);
     }
 
     @Override

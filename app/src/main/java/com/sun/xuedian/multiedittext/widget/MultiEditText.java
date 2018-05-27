@@ -63,6 +63,7 @@ public class MultiEditText extends RelativeLayout implements TextWatcher{
             switch (attr){
                 case R.styleable.MultiEditText_showCancelButton:
                     isShowCancelButton = typedArray.getBoolean(attr, true);
+                    break;
                 case R.styleable.MultiEditText_cancelButtonSrc:
                     btn_cancel.setImageResource(typedArray.getResourceId(attr, R.drawable.cancel));
                     break;
@@ -105,8 +106,16 @@ public class MultiEditText extends RelativeLayout implements TextWatcher{
                         editText.setInputType(InputType.TYPE_CLASS_NUMBER);
                     }
                     break;
+                case R.styleable.MultiEditText_textSize:
+                    editText.setTextSize(typedArray.getDimension(attr, getResources().getDimension(R.dimen.DefaultTextSize)));
+                    break;
             }
 
+            if (isShowCancelButton && !TextUtils.isEmpty(getText())){
+                btn_cancel.setVisibility(VISIBLE);
+            }else {
+                btn_cancel.setVisibility(GONE);
+            }
         }
 
     }
