@@ -30,14 +30,14 @@ allprojects {
 
 2. 在app的gradle 文件中 build.gradle
 添加依赖
-compile 'com.github.sunxt:MultiEditText:1.0.5'
+compile 'com.github.sunxt:MultiEditText:1.0.6'
 
 如下：
 dependencies {
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.android.support:support-v4:25.3.0'
     
-    compile 'com.github.sunxt:MultiEditText:1.0.5'
+    compile 'com.github.sunxt:MultiEditText:1.0.6'
 }
 
 然后就可以在你的项目中使用了MultiEditText
